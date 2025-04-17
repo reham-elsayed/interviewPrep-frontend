@@ -15,9 +15,9 @@ Implement a debounce function which accepts a callback function and a wait durat
 
 function debounce(func, wait) {
     let id;
-    return function(...args){
+    return function(){
       clearTimeout(id)    //cancells the previous timeout if exists
-        id = setTimeout(()=>{func(args)}, wait) // schedule a new timeout    obj.increment
+        id = setTimeout(()=>{func.apply(this)}, wait) // schedule a new timeout    obj.increment
     }
   }
 
@@ -28,8 +28,29 @@ function debounce(func, wait) {
     }
   };
   
-  const debouncedIncrement = debounce(obj.increment.bind(obj), 1000);
+  const debouncedIncrement = debounce(obj.increment, 1000);
   
   obj.increment(); // this = obj ✅ works
- debouncedIncrement(); // this = undefined or window ❌ fails without apply(this)
+ debouncedIncrement(); 
   
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
