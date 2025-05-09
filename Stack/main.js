@@ -1,35 +1,36 @@
+
 class Node{
   constructor(value){
-this.nodeValue = value
-this.next = null
+    this.nodeValue= value;
+    this.next=null
   }
 }
 
 class Stack {
     constructor(){
-       this.head = null
-       this.size= 0
+      this.head= null;
+      this.size=0
       }
   
        push(item){
-const newNode = new Node(item)
-newNode.next = this.head
-this.head = newNode
-const newSize= this.size+=1
-     return newSize
+        const newNode = new Node(item)
+        newNode.next= this.head
+        this.head = newNode;
+        return this.size+=1
+
        }
        pop(){
-      
-  const deletedHead = this.head
-  this.head = this.head.next
-  this.size--
-  return  deletedHead.nodeValue
+        if (!this.head) return
+        const poppedNode = this.head.nodeValue
+        this.head= this.head.next
+        this.size-=1
+        return poppedNode
        }
        isEmpty(){
         return this.size === 0
        }
        peek(){
-        return this.head.nodeValue
+return this.head.nodeValue
        }
   
        length(){
@@ -44,6 +45,7 @@ const newSize= this.size+=1
   newStack.push(50)
   newStack.push(40)
   newStack.push(30)
-  newStack.push(20)
-  newStack.pop()
+ console.log( newStack.push(20))
+  console.log(newStack)
+  console.log(newStack.pop())
   console.log(newStack)
