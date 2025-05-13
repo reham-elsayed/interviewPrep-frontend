@@ -1,0 +1,35 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+
+
+
+/* progress bar style*/
+
+.bar {
+  width: 100%;
+  height: 10px;
+  margin-top:5px;
+  background-color: gainsboro;
+}
+@keyframes progress-bar {
+  from {    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-bar {
+  margin-bottom: 5px;
+  height: 100%;
+  animation-name: progress-bar;
+  animation-duration: 2000ms;
+  background-color: green;
+  animation-delay: 20ms;
+}
