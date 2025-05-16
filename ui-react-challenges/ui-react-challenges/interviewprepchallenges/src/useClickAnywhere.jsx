@@ -1,16 +1,18 @@
-import React from 'react'
-
+import React, { useEffect, useRef } from 'react'
 
 export default function useClickAnywhere(handler) {
-    const handlerRef = React.useRef(handler)
-    React.useEffect(()=>{
-handlerRef.current= handler;
-console.log("handler changed")
-    },handler)
+    const handleRef = useRef(handler)
+
+
 React.useEffect(()=>{
-    console.log("the event is running")
-    const listener=(event)=>handlerRef.current(event)
-  window.addEventListener('click',listener)
-return ()=>{window.removeEventListener('click',listener)}
+  handleRef.current = handler
+  console.log("hello from dependency hook")
+},[handler])
+useEffect(()=>{
+const listener = (event)=>handleRef.current(event)
+     console.log("event")
+  window.addEventListener('click', listener)
+return ()=>{window.removeEventListener('click',listener)} 
 },[])
+
 }

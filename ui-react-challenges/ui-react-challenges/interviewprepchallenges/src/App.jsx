@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import './App.css'
 import useDebounce from './useDebounce'
@@ -9,9 +9,15 @@ function App() {
  
   const [keyword, setKeyword] = useState('');
   const debouncedKeyword = useDebounce(keyword, 4000);
- useClickAnywhere(() => {
-    setCount((prev) => prev + 1);
-  });
+  const eventIncrement = useCallback(() => {
+   console.log('hello from handler in app');
+   setCount(prev=> prev+1)
+  },[])
+  const logSomething = () => {
+   console.log('hello from logSomeThing in app');
+  }
+// useClickAnywhere(eventIncrement);
+ useClickAnywhere(logSomething)
   return (
     <div>
       
