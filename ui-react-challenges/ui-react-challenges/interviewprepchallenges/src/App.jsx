@@ -9,21 +9,27 @@ function App() {
  
   const [keyword, setKeyword] = useState('');
   const debouncedKeyword = useDebounce(keyword, 4000);
+ 
+ 
+ 
   const eventIncrement = useCallback(() => {
    console.log('hello from handler in app');
    setCount(prev=> prev+1)
   },[])
-  const logSomething = () => {
+
+
+  const logSomething =useCallback( () => {
    console.log('hello from logSomeThing in app');
-  }
-// useClickAnywhere(eventIncrement);
+  },[])
+ 
  useClickAnywhere(logSomething)
+ useClickAnywhere(eventIncrement);
   return (
     <div>
       
-      <input value={keyword} onChange={(e) => setKeyword(e.target.value)} />
+      {/* <input value={keyword} onChange={(e) => setKeyword(e.target.value)} />
       <p>Debounced keyword: {debouncedKeyword}</p>
-      <Progress/>
+      <Progress/> */}
 
      <div>useClickAnywhere Hook Counter : {count}</div>
     </div>
